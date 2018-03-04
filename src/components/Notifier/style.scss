@@ -1,0 +1,89 @@
+$circleSize: 36px;
+$borderPercentSize: 40;
+$borderSize: ($circleSize/100*$borderPercentSize/2);
+$animationDuration: 1s;
+
+.loader{
+  visibility: hidden;
+  display: flex;
+  position: fixed;
+  align-items: center;
+  bottom: 0;
+  left: 0;
+  margin: 10px;
+
+  animation-duration: $animationDuration;
+  animation-fill-mode: both;
+  transition: visibility 0s linear $animationDuration;
+  animation-name: getOff;
+
+  &.visible {
+    animation-name: getOn;
+    visibility: visible;
+    transition: visibility 0s linear 0s;
+  }
+
+  &>*{
+    display: inline-block;
+  }
+
+  .circle {
+    position: relative;
+    width: ($circleSize - $borderSize * 2);
+    height: ($circleSize - $borderSize * 2);
+    border-radius: 50%;
+    border: $borderSize solid transparent;
+    border-top: $borderSize solid rgba(0,0,0,0.2);
+    opacity: .8;
+    animation: moshpit 4.5s infinite linear;
+
+    &:after {
+      content: '';
+      width: ($circleSize - $borderSize * 2);
+      height: ($circleSize - $borderSize * 2);
+      position: absolute;
+      top: ($circleSize/2*-1);
+      margin: ($circleSize/2) auto;
+      border-radius: 50%;
+      border: ($circleSize/$borderSize)px solid transparent;
+      box-shadow: 0 0 0 $borderSize rgba(0,0,0,0.12);
+    }
+  }
+
+  .loader-msg {
+    position: relative;
+    top: 2px;
+    margin-left: 10px;
+    color: #9b9b9b;
+    letter-spacing: 1px;
+  }
+}
+
+
+@keyframes moshpit {
+  from { }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes getOn {
+  from {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes getOff {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+}
