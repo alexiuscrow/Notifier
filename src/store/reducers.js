@@ -1,21 +1,27 @@
 'use strict';
 
-import { NOTIFIER_ACTION as ACTION } from '../constants';
+import {NOTIFIER_ACTION as ACTION} from '../constants';
 
-const initialState = {
-    loading: {
-        visibleStatus: false,
-        message: 'Loading'
-    }
-};
-
-export const notifierReducer = (state = initialState, action) => {
+export const notifierReducer = (state = {notifications: []}, action = {}) => {
     switch (action.type) {
-        case ACTION.CHANGE_LOADING_VISIBLE_STATUS:
-            return { ...state, loading: { ...state.loading, visibleStatus: action.payload} };
-        case ACTION.CHANGE_LOADING_MESSAGE:
-            return { ...state, loading: { ...state.loading, message: action.payload} };
+        case ACTION.SHOW_NOTIFICATION:
+            return {
+                ...state,
+                notifications: [
+                    ...state.notifications,
+                    {
+                        id: action.id,
+                        ...action.opts
+                    }
+                ]
+            };
+        case ACTION.HIDE_NOTIFICATION:
+            const notifications = state.notifications.filter(notification => {
+                return notification.id != action.id;
+            });
+            return { ...state, notifications: notifications };
+        case ACTION.HIDE_ALL_NOTIFICATIONS:
+            return { ...state, notifications: [] };
     }
-
     return state;
 };

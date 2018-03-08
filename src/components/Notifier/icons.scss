@@ -1,0 +1,68 @@
+$iconSize: 36px;
+$borderPercentSize: 40;
+$borderSize: ($iconSize/100*$borderPercentSize/2);
+
+$infoStickColor: #1b96b2;
+$errorStickColor: #ff3f00;
+$warningStickColor: #daa615;
+
+$circleSpeed: 4.5s;
+$flickStickSpeed: 1s;
+
+.notifier {
+  .container {
+    .notification {
+      .loader-circle {
+        position: relative;
+        width: ($iconSize - $borderSize * 2);
+        height: ($iconSize - $borderSize * 2);
+        border-radius: 50%;
+        border: $borderSize solid transparent;
+        border-top: $borderSize solid rgba(0, 0, 0, 0.2);
+        opacity: .8;
+        animation: moshpit $circleSpeed infinite linear;
+
+        &:after {
+          content: '';
+          width: ($iconSize - $borderSize * 2);
+          height: ($iconSize - $borderSize * 2);
+          position: absolute;
+          top: ($iconSize/2*-1);
+          margin: ($iconSize/2) auto;
+          border-radius: 50%;
+          border: ($iconSize/$borderSize) px solid transparent;
+          box-shadow: 0 0 0 $borderSize rgba(0, 0, 0, 0.12);
+        }
+      }
+
+      .stick {
+        height: $iconSize;
+        width: ($iconSize/5);
+        animation: flickerStick $flickStickSpeed infinite;
+        &.info-stick {
+          background-color: $infoStickColor;
+        }
+        &.error-stick {
+          background-color: $errorStickColor;
+        }
+        &.warning-stick {
+          background-color: $warningStickColor;
+        }
+      }
+    }
+  }
+}
+
+@keyframes moshpit {
+  from {
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes flickerStick {
+  0%   { opacity:.9; }
+  50%  { opacity:.7; }
+  100% { opacity:.9; }
+}
