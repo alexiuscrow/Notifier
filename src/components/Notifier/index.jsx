@@ -24,14 +24,14 @@ export class Notifier extends React.Component {
     };
 
     addDelayedHiding = () => {
-        // this.props.notifications.forEach((notification) => {
-        //     if (notification.type !== NOTIFICATION_TYPE.LOADER && !notification.isTimerAdded) {
-        //         notification.isTimerAdded = true;
-        //         setTimeout(() => {
-        //             this.props.hide(notification.id);
-        //         }, this.props.delayToHiding || 10000);
-        //     }
-        // }, this);
+        this.props.notifications.forEach((notification) => {
+            if (notification.type !== NOTIFICATION_TYPE.LOADER && !notification.isTimerAdded) {
+                notification.isTimerAdded = true;
+                setTimeout(() => {
+                    this.props.hide(notification.id);
+                }, this.props.delayToHiding || 10000);
+            }
+        }, this);
     };
 
     componentDidMount() {
