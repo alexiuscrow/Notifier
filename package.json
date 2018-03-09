@@ -16,7 +16,7 @@
   ],
   "postcss": {
     "plugins": {
-      "autoprefixer": {}
+      "autoprefixer": {"remove": false}
     }
   },
   "devDependencies": {

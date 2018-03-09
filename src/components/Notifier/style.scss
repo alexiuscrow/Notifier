@@ -1,6 +1,6 @@
 @import './icons';
 
-$notificationHeight: 36px;
+$notificationHeight: 2.3em;
 $spaceBetweenNotifications: 5px;
 
 $breakIntoEnterDuration: 1s;
@@ -29,6 +29,7 @@ $notificationTextColor: #7a7a7a;
       transition-property: height, margin-top;
       transition-timing-function: ease-out;
       transition-duration: $notificationAddingSpeed;
+      height: $notificationHeight;
 
       &.break-into-enter  {
         height: 0;
@@ -67,7 +68,7 @@ $notificationTextColor: #7a7a7a;
       }
 
       .notification {
-        display: flex;
+        display: inline-flex;
         align-items: center;
 
         transition-property: opacity, transform;
@@ -79,10 +80,17 @@ $notificationTextColor: #7a7a7a;
 
         .notification-msg {
           position: relative;
-          top: 2px;
-          margin-left: 10px;
+          margin: 0 10px;
           color: $notificationTextColor;
           letter-spacing: 1px;
+          line-height: 1.1;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          max-height: $notificationHeight;
+          display: -webkit-box;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          padding: 0 4px;
         }
       }
     }

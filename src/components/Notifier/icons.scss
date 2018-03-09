@@ -1,4 +1,4 @@
-$iconSize: 36px;
+$iconSize: 2.3em;
 $borderPercentSize: 40;
 $borderSize: ($iconSize/100*$borderPercentSize/2);
 
@@ -12,41 +12,43 @@ $flickStickSpeed: 1s;
 .notifier {
   .container {
     .notification {
-      .loader-circle {
-        position: relative;
-        width: ($iconSize - $borderSize * 2);
-        height: ($iconSize - $borderSize * 2);
-        border-radius: 50%;
-        border: $borderSize solid transparent;
-        border-top: $borderSize solid rgba(0, 0, 0, 0.2);
-        opacity: .8;
-        animation: moshpit $circleSpeed infinite linear;
-
-        &:after {
-          content: '';
+      .icon-container {
+        .loader-circle {
+          position: relative;
           width: ($iconSize - $borderSize * 2);
           height: ($iconSize - $borderSize * 2);
-          position: absolute;
-          top: ($iconSize/2*-1);
-          margin: ($iconSize/2) auto;
           border-radius: 50%;
-          border: ($iconSize/$borderSize) px solid transparent;
-          box-shadow: 0 0 0 $borderSize rgba(0, 0, 0, 0.12);
-        }
-      }
+          border: $borderSize solid transparent;
+          border-top: $borderSize solid rgb(195, 195, 195);
+          opacity: .8;
+          animation: moshpit $circleSpeed infinite linear;
 
-      .stick {
-        height: $iconSize;
-        width: ($iconSize/5);
-        animation: flickerStick $flickStickSpeed infinite;
-        &.info-stick {
-          background-color: $infoStickColor;
+          &:after {
+            content: '';
+            width: ($iconSize - $borderSize * 2);
+            height: ($iconSize - $borderSize * 2);
+            position: absolute;
+            top: ($iconSize/2*-1);
+            margin: ($iconSize/2) auto;
+            border-radius: 50%;
+            border: ($iconSize/$borderSize) px solid transparent;
+            box-shadow: 0 0 0 $borderSize rgba(0, 0, 0, 0.12);
+          }
         }
-        &.error-stick {
-          background-color: $errorStickColor;
-        }
-        &.warning-stick {
-          background-color: $warningStickColor;
+
+        .stick {
+          height: $iconSize;
+          width: ($iconSize/5);
+          animation: flickerStick $flickStickSpeed infinite;
+          &.info-stick {
+            background-color: $infoStickColor;
+          }
+          &.error-stick {
+            background-color: $errorStickColor;
+          }
+          &.warning-stick {
+            background-color: $warningStickColor;
+          }
         }
       }
     }
