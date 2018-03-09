@@ -14,14 +14,15 @@ const paths = {
 module.exports = {
     context: paths.src,
     entry: {
-        app: "./app"
+        app: "./app",
+        babelPolyfill: "babel-polyfill"
     },
     output: {
         path: paths.dist,
         filename: "[name].js",
         library: "[name]"
     },
-    watch: true,
+    watch: false,
     devtool: 'source-map',
     resolve: {
         modules: [paths.src, 'node_modules'],
