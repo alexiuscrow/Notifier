@@ -72,7 +72,6 @@ export class Control extends React.Component {
                 </fieldset>
                 <fieldset>
                     <legend>Removing</legend>
-                    <button onClick={this.onClickHide}>Hide notification</button>
                     <select name="notifications" id="notifications" onChange={this.onChangeNotificationsSelect}
                             size={this.props.notifier.notifications.length}>
                         {this.props.notifier.notifications.map((notification, index) => {
@@ -83,6 +82,7 @@ export class Control extends React.Component {
                             );
                         })}
                     </select>
+                    <button onClick={this.onClickHide}>Hide notification</button>
                 </fieldset>
             </div>
         );
